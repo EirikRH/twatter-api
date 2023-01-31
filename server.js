@@ -20,5 +20,5 @@ app.get('/tweets', async (req, res) =>{
 });
 
 app.listen(PORT, () =>{
-  console.log(`Twitter API listening to ${PORT}`)
+  console.log(`Twitter API listening to port ${PORT}`)
 })

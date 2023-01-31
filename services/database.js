@@ -9,17 +9,17 @@ const database = new Pool({
 });
 
 async function getTweets(){
-  const result = database.query(`
+  const result = await database.query(`
     SELECT
       tweets.id,
       tweets.message,
       tweets.created_at,
       users.name,
-      users.username,
+      users.username
     FROM
       tweets
-    INNER JOIN usrs ON 
-      tweets.user_id = users.is
+    INNER JOIN users ON 
+      tweets.user_id = users.id
     ORDER BY created_at DESC;
   `);
   console.log(result);
