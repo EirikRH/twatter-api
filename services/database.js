@@ -48,7 +48,28 @@ async function getTweetsByUsername(username){
   return result.rows;
 }
 
+async function postTweet(username, message){
+  const userId = await database.query(`
+    SELECT 
+      id
+    FROM
+      users
+    WHERE
+      username = $1;
+  `, [username]);
+  const tweet = await database.query(`
+    INSERT INTO tweets
+      (user_id, message)
+    VALUES
+      ($1, $2)
+    RETURNING id, message;
+  `, [userId.rows[0].id, message]);
+
+  return tweet.rows[0];
+}
+
 module.exports = {
   getTweets,
   getTweetsByUsername,
+  postTweet,
 }
