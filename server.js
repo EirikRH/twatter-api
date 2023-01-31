@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-const { getTweets } = require('./services/database');
+const { getTweets, getTweetsByUsername } = require('./services/database');
 
 app.use(cors());
 app.use(express.json());
@@ -16,6 +16,12 @@ app.get('/', (req, res) =>{
 
 app.get('/tweets', async (req, res) =>{
   const tweets = await getTweets();
+  res.json(tweets);
+});
+
+app.get('/tweets/:username', async (req, res) =>{
+  const{ username } = req.params.username;
+  const tweets = await getTweetsByUsername(username);
   res.json(tweets);
 });
 
