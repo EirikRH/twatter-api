@@ -20,7 +20,7 @@ app.get('/tweets', async (req, res) =>{
 });
 
 app.get('/tweets/:username', async (req, res) =>{
-  const{ username } = req.params.username;
+  const { username } = req.params;
   const tweets = await getTweetsByUsername(username);
   res.json(tweets);
 });
