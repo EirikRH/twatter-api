@@ -22,7 +22,6 @@ async function getTweets(){
       tweets.user_id = users.id
     ORDER BY created_at DESC;
   `);
-  console.log(result.rows);
   return result.rows;
 }
 
