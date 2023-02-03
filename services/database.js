@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 
-const POSTGRES_URL = process.env.POSTGRES_URL || 'postgresql://postgres:1234@localhost:5432/TWATTER'
+const POSTGRES_URL = process.env.POSTGRES_URL || 'postgres://rickyboy:gkkSdvVhZj1ciZ22TnCd0YQO0RsaUVTQ@dpg-cfedk91mbjsqnjm62920-a.frankfurt-postgres.render.com'
 
 const database = new Pool({
   connectionString: POSTGRES_URL,
