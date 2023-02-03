@@ -70,7 +70,7 @@ async function getUserByUsername(username){
     SELECT 
       *
     FROM
-      Users
+      users
     WHERE
      username = $1
   `, [username]);
