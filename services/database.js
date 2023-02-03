@@ -67,8 +67,22 @@ async function postTweet(username, message){
   return tweet.rows[0];
 }
 
+async function getUserByUsername(username){
+  const result = database.query(`
+    SELECT 
+      *
+    FROM
+      Users
+    WHERE
+     username = $1
+  `, [username]);
+
+  return result.rows[0];
+}
+
 module.exports = {
   getTweets,
   getTweetsByUsername,
   postTweet,
+  getUserByUsername,
 }
